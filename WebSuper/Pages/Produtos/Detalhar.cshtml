@@ -1,4 +1,28 @@
-﻿@page
+﻿@page "{id:int}"
 @model WebSuper.Pages.Produtos.DetalharModel
 @{
+    ViewData["Title"] = "Detalhes do Produto";
 }
+
+<h2>@ViewData["Title"]</h2>
+
+
+<div>
+    <label>ID do produto: </label>
+    <span>@Model.produto.Id</span>
+</div>
+
+<div>
+    <label>Nome do produto: </label>
+    <span>@Model.produto.Nome</span>
+</div>
+
+<div>
+    <label>Preço do produto: </label>
+    <span>@Model.produto.Preco.ToString("C")</span>
+</div>
+
+<div>
+    <label>Quantidade em Estoque: </label>
+    <span>@Model.produto.Estoque</span>
+</div>

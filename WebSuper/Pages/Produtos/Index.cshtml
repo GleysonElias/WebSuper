@@ -16,6 +16,7 @@
             <th style="border: 1px solid black; padding: 10px;">Nome</th>
             <th style="border: 1px solid black; padding: 10px;">Preco</th>
             <th style="border: 1px solid black; padding: 10px;">Quantidade em Estoque</th>
+            <th style="border: 1px solid black; padding: 10px;">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +27,10 @@
                 <td style="border: 1px solid black; padding: 10px;">@produto.Nome</td>
                 <td style="border: 1px solid black; padding: 10px;">@produto.Preco.ToString("C")</td>
                 <td style="border: 1px solid black; padding: 10px;">@produto.Estoque</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <a class="btn btn-outline-info" asp-page="/Produtos/Detalhar" asp-route-id="@produto.Id">Detalhar</a>
+                    <a class="btn btn-outline-info" asp-page="/Produtos/Editar" asp-route-id="@produto.Id">Editar</a>
+                </td>
             </tr>
         }
     </tbody>
