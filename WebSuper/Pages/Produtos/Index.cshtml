@@ -1,0 +1,32 @@
+﻿@page
+@model WebSuper.Pages.Produtos.IndexModel
+@{
+    ViewData["Title"] = "Cadastro de Produto";
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<p><a asp-page="Criar">Adicionar novo Produto</a></p>
+
+<table style="border-collapse: collapse; width: 100%;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid black; padding: 10px;">Id</th>
+            <th style="border: 1px solid black; padding: 10px;">Nome</th>
+            <th style="border: 1px solid black; padding: 10px;">Preco</th>
+            <th style="border: 1px solid black; padding: 10px;">Quantidade em Estoque</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model.Produtos)
+        {
+            <tr>
+                <td style="border: 1px solid black; padding: 10px;">@produto.Id</td>
+                <td style="border: 1px solid black; padding: 10px;">@produto.Nome</td>
+                <td style="border: 1px solid black; padding: 10px;">@produto.Preco.ToString("C")</td>
+                <td style="border: 1px solid black; padding: 10px;">@produto.Estoque</td>
+            </tr>
+        }
+    </tbody>
+</table>
