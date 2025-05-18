@@ -4,29 +4,44 @@ using WebSuper.Models;
 
 namespace WebSuper.Pages.Produtos
 {
-    public class DetalharModel : PageModel
+    public class EditarModel : PageModel
     {
-        public Produto produto { get; set; }
-        public IActionResult OnGet(int id)
+        [BindProperty]
+
+        public Produto Produto { get; set; }
+
+        public void OnGet(int id)
         {
             var produtos = carregarProdutos();
+            Produto = produtos.FirstOrDefault(produto => produto.Id == id);
+        }
 
-            produto = produtos.FirstOrDefault(produto => produto.Id == id);
-
-            if (produto == null)
-            {
-                return RedirectToPage("/Produtos/Index");
-            }
-            else
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            var linhas = System.IO.File.ReadAllLines("produtos.txt").ToList();
+
+            for (int i = 0; i < linhas.Count; i++)
+            {
+                var dados = linhas[i].Split(';');
+                if(int.Parse(dados[0]) == Produto.Id)
+                {
+                    linhas[i] = Produto.Id + ";" + Produto.Nome + ";" + Produto.Preco + ";" + Produto.Estoque;
+                    break;
+                }
+            }
+            System.IO.File.WriteAllLines("produtos.txt", linhas);
+            return RedirectToPage("/Produtos/Index");
+         
         }
-      
+
 
         public List<Produto> carregarProdutos()
-            {
+        {
             var produtos = new List<Produto>();
 
             if (System.IO.File.Exists("produtos.txt"))
@@ -49,5 +64,7 @@ namespace WebSuper.Pages.Produtos
             }
             return produtos;
         }
+
+
     }
 }

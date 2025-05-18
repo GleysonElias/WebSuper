@@ -1,0 +1,30 @@
+﻿@page "{id:int}"
+@model WebSuper.Pages.Produtos.EditarModel
+@{
+    ViewData["Title"] = "Editar Produto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Produto.Id" />
+
+    <div class="form-group">
+        <label asp-for="Produto.Nome">Nome do produto: </label>
+        <input asp-for="Produto.Nome" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Produto.Preco">Preço do produto: </label>
+        <input asp-for="Produto.Preco" type="number" step="0.01" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Produto.Estoque">Quantidade do produto em estoque: </label>
+        <input asp-for="Produto.Estoque" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-page="/Produtos/Index" class="btn btn-secondary">Cancelar</a>
+</form>
