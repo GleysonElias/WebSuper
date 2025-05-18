@@ -1,0 +1,27 @@
+﻿@page
+@model WebSuper.Pages.Usuarios.CriarModel
+@{
+    ViewData["Title"] = "Cadastro de Usuário";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div>
+        <label for="Id">ID do usuário: </label>
+        <input type=text id="Id" name="usuario.Id" />
+    </div>    
+    <div>
+        <label for="Nome">Nome do usuário: </label>
+        <input type=text id="Nome" name="usuario.Nome" />
+    </div>    
+    <div>
+        <label for="Senha">Senha: </label>
+        <input type=text id="Senha" name="usuario.Senha" />
+    </div>    
+    <div>
+        <label for="Email">Email do usuário: </label>
+        <input type=text id="Email" name="usuario.Email" />
+    </div>    
+    <button type="submit">Cadastrar</button>
+</form>

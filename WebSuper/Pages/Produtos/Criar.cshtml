@@ -1,0 +1,28 @@
+﻿@page
+@model WebSuper.Pages.Produtos.CriarModel
+@{
+    ViewData["Title"] = "Cadastro de Produto";
+}
+
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div>
+        <label for="Id">ID do produto: </label>
+        <input type=text id="Id" name="produto.Id" />
+    </div>
+    <div>
+        <label for="Nome">Nome do produto: </label>
+        <input type=text id="Nome" name="produto.Nome" />
+    </div>
+    <div>
+        <label for="Preco">Preco: </label>
+        <input type=text id="Preco" name="produto.Preco" />
+    </div>
+    <div>
+        <label for="Quantidade">Quantidade em estoque: </label>
+        <input type=text id="Quantidade" name="produto.Estoque" />
+    </div>
+    <button type="submit">Cadastrar</button>
+</form>
